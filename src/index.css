@@ -1,0 +1,354 @@
+/* =====================================================================
+   TSG Plast India — Global styles + THEME TOKENS
+   Theme logo se liya gaya hai: BLACK oval + WHITE + LOGO BLUE swoosh.
+   Pura theme (colours, fonts, radius) sirf yahin :root se control hota hai.
+   ===================================================================== */
+
+:root {
+  /* Palette — logo black + white + logo blue */
+  --ink: #0a0e12; /* near-black, thoda cool tint */
+  --ink-2: #10161c;
+  --ink-3: #16202a;
+  --paper: #f5f8fa; /* cool white */
+  --paper-2: #eaf0f5;
+  --white: #ffffff;
+  --line-d: rgba(10, 14, 18, 0.14);
+  --line-l: rgba(255, 255, 255, 0.14);
+
+  /* LOGO BLUE — primary. #0F76B4 = logo ka blue, AA contrast ke liye thoda deep */
+  --accent: #0f76b4;
+  --accent-soft: #3aa6dc; /* dark backgrounds par highlight */
+  --accent-deep: #0a527c;
+  --accent-tint: #e6f2fa; /* light blue wash */
+  --accent-ink: #ffffff; /* accent ke UPAR text */
+
+  --steel: #7e8fa0;
+  --ink-soft: rgba(10, 14, 18, 0.66);
+  --light-soft: rgba(255, 255, 255, 0.7);
+  --whatsapp: #25d366;
+  --star: #f5a623; /* rating stars — universal gold */
+
+  /* Type */
+  --font-head: "Archivo", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Shape & depth */
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-card: 0 24px 60px -24px rgba(10, 30, 48, 0.35);
+  --shadow-pop: 0 18px 44px -14px rgba(15, 118, 180, 0.5);
+
+  /* Layout */
+  --container: 1140px;
+  --header-h: 72px;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  overflow-x: clip; /* koi horizontal scroll nahi */
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Shared layout helpers ---------- */
+.container {
+  width: min(var(--container), 100% - 40px);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(64px, 9vw, 108px);
+  position: relative;
+}
+
+.section--dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.section--alt {
+  background: var(--paper-2);
+}
+
+/* Blueprint grid texture for dark sections */
+.grid-lines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-l) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-l) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 30%, transparent 100%);
+}
+
+/* Kicker + section heading */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section--dark .kicker {
+  color: var(--accent-soft);
+}
+
+.kicker::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  background: var(--accent);
+  flex: none;
+}
+
+.section--dark .kicker::before {
+  background: var(--accent-soft);
+}
+
+.section-title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 2.9rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+
+.section-sub {
+  margin-top: 14px;
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+.section--dark .section-sub {
+  color: var(--light-soft);
+}
+
+/* ---------- Buttons (min 44px tap targets) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.94rem;
+  letter-spacing: 0.01em;
+  border: 1.5px solid transparent;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, background 0.25s, border-color 0.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn--accent:hover {
+  background: var(--accent-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pop);
+}
+
+.btn--whatsapp {
+  background: var(--whatsapp);
+  color: #06230f;
+}
+
+.btn--whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -14px rgba(37, 211, 102, 0.55);
+}
+
+.btn--ghost-light {
+  border-color: var(--line-l);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn--ghost-light:hover {
+  border-color: var(--accent-soft);
+  background: rgba(58, 166, 220, 0.14);
+  transform: translateY(-2px);
+}
+
+.btn--ghost-dark {
+  border-color: var(--line-d);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn--ghost-dark:hover {
+  background: var(--ink);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* ---------- Scroll reveal ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Marquee ---------- */
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line-l);
+  border-bottom: 1px solid var(--line-l);
+  background: rgba(16, 22, 28, 0.88);
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 0; /* spacing .marquee__copy ke padding se aata hai — seamless loop */
+  width: max-content;
+  padding-block: 16px;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.marquee__copy {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-right: 3rem;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--steel);
+  white-space: nowrap;
+}
+
+.marquee__item::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--accent-soft);
+  flex: none;
+}
+
+/* ---------- Swiper theme overrides ---------- */
+.swiper-pagination-bullet {
+  width: 22px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 1;
+  transition: background 0.3s, width 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-soft);
+  width: 34px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

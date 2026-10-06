@@ -1,0 +1,130 @@
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 200;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: top 0.25s;
+}
+
+.skip-link:focus-visible {
+  top: 12px;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.35s, box-shadow 0.35s, border-color 0.35s;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header--solid {
+  background: rgba(15, 20, 24, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--line-l);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Brand lockup — asli logo (SVG) + text */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.brand__logo {
+  height: 44px;
+}
+
+@media (min-width: 900px) {
+  .brand__logo {
+    height: 50px;
+  }
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand__text strong {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+
+.brand__text span {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+/* Nav */
+.site-nav {
+  display: none;
+  margin-left: auto;
+  gap: 4px;
+}
+
+.site-nav a {
+  padding: 10px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--light-soft);
+  transition: color 0.25s, background 0.25s;
+}
+
+.site-nav a:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.site-header__call {
+  margin-left: auto;
+  min-height: 46px;
+  padding: 0 18px;
+  flex: none;
+}
+
+@media (min-width: 900px) {
+  .site-nav {
+    display: flex;
+  }
+  .site-header__call {
+    margin-left: 12px;
+  }
+}
+
+/* Chhote phones par sirf icon dikhe */
+@media (max-width: 420px) {
+  .site-header__call-text {
+    display: none;
+  }
+  .site-header__call {
+    width: 46px;
+    padding: 0;
+  }
+}

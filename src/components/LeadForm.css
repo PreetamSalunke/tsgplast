@@ -1,0 +1,111 @@
+.lead-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: clamp(20px, 3.4vw, 30px);
+  border-top: 5px solid var(--accent);
+}
+
+.lead-card__head h3 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-top: 10px;
+}
+
+.lead-card__tag {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.lead-card__head p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.lead-card__head p svg {
+  color: #128c4b;
+  flex: none;
+}
+
+/* Fields */
+.lead-form {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lead-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lead-form__field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.lead-form__field label em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.lead-form__field input {
+  min-height: 50px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line-d);
+  background: var(--white);
+  color: var(--ink);
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lead-form__field input::placeholder {
+  color: rgba(15, 20, 24, 0.4);
+}
+
+.lead-form__field input:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(15, 118, 180, 0.28);
+}
+
+.lead-form__field input[aria-invalid="true"] {
+  border-color: #c8352b;
+}
+
+.lead-form__error {
+  font-size: 0.78rem;
+  color: #a9231a;
+  font-weight: 600;
+}
+
+.lead-form .btn {
+  margin-top: 4px;
+}
+
+.lead-form__note {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}

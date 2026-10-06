@@ -1,0 +1,96 @@
+.fab-wrap {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 90;
+  pointer-events: none; /* sirf buttons clickable */
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px calc(max(18px, env(safe-area-inset-bottom)));
+}
+
+.fab {
+  pointer-events: auto;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  animation: fab-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s backwards;
+}
+
+@keyframes fab-in {
+  from {
+    transform: translateY(90px);
+    opacity: 0;
+  }
+}
+
+.fab:active {
+  transform: scale(0.92);
+}
+
+/* LEFT — Call: clean white on dark */
+.fab--call {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid rgba(15, 20, 24, 0.15);
+  box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.55);
+}
+
+.fab--call:hover {
+  transform: translateY(-3px);
+}
+
+/* RIGHT — WhatsApp green with soft pulse */
+.fab--whatsapp {
+  position: relative;
+  background: var(--whatsapp);
+  color: #fff;
+  box-shadow: 0 14px 34px -8px rgba(37, 211, 102, 0.6);
+  animation-delay: 0.95s;
+}
+
+.fab--whatsapp:hover {
+  transform: translateY(-3px);
+}
+
+.fab--whatsapp::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--whatsapp);
+  animation: fab-pulse 2.4s ease-out 1.6s infinite;
+  pointer-events: none;
+}
+
+@keyframes fab-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+/* Desktop par thode compact, bottom-right aligned */
+@media (min-width: 1024px) {
+  .fab-wrap {
+    justify-content: flex-end;
+    gap: 14px;
+    padding-right: 26px;
+  }
+  .fab--call {
+    order: 1;
+  }
+  .fab--whatsapp {
+    order: 2;
+  }
+  .fab {
+    width: 54px;
+    height: 54px;
+  }
+}
